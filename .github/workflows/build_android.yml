@@ -50,7 +50,7 @@ jobs:
           KEYSTORE_BASE64_SECRET: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
           echo "Creating keystore file..."
-          echo "$KEYSTORE_BASE64_SECRET" | base64 --decode > android/app/upload-keystore.jks
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
           echo "Creating key.properties file..."
           echo "storeFile=upload-keystore.jks" > android/key.properties
           echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
