@@ -45,6 +45,20 @@ jobs:
         working-directory: ./simple_live_tv_app
         run: flutter pub get
 
+      - name: Decode Keystore and Create Key Properties
+           env:
+              KEYSTORE_BASE64_SECRET: ${{ secrets.KEYSTORE_BASE64 }} # 将 secret 定义为环境变量
+    run: |
+    echo "Creating keystore file..."
+    # 将 Base64 字符串解码为 .jks 文件
+    echo "$KEYSTORE_BASE64_SECRET" | base64 --decode > android/app/upload-keystore.jks
+    echo "Creating key.properties file..."
+    # 创建 key.properties 文件
+    echo "storeFile=upload-keystore.jks" > android/key.properties
+    echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
+    echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+    echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+
 
 
       # 5. 编译 Debug APK (在 TV App 目录中执行)
