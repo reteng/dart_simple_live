@@ -61,7 +61,7 @@ jobs:
       - name: Build Release APK
         # 新增：指定工作目录
         working-directory: ./simple_live_tv_app
-        run: flutter build apk --release
+        run: flutter build apk --release --target-platform android-arm64
 
       # 6. 上传构建产物
       - name: Upload APK artifact
@@ -70,4 +70,4 @@ jobs:
           # Artifact 的名称
           name: tv-app-release-apk
           # 要上传的文件的路径，必须从仓库根目录开始写
-          path: simple_live_tv_app/build/app/outputs/flutter-apk/app-release.apk
+          path: ./simple_live_tv_app/build/app/outputs/flutter-apk/app-release.apk
