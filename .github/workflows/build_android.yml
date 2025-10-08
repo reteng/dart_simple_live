@@ -46,9 +46,9 @@ jobs:
         run: flutter pub get
 
       - name: Decode Keystore and Create Key Properties
-          env:
-            KEYSTORE_BASE64_SECRET: ${{ secrets.KEYSTORE_BASE64 }}
-         run: |
+        env:
+          KEYSTORE_BASE64_SECRET: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
            echo "Creating keystore file..."
     # 将 Base64 字符串解码为 .jks 文件
            echo "$KEYSTORE_BASE64_SECRET" | base64 --decode > android/app/upload-keystore.jks
