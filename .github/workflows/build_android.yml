@@ -44,7 +44,6 @@ jobs:
         # 新增：指定工作目录
         working-directory: ./simple_live_tv_app
         run: flutter pub get
-
       - name: Decode Keystore and Create Key Properties
         env:
           KEYSTORE_BASE64_SECRET: ${{ secrets.KEYSTORE_BASE64 }}
