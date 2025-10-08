@@ -50,12 +50,12 @@ jobs:
           KEYSTORE_BASE64_SECRET: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
           echo "Creating keystore file..."
-          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
+          echo "$KEYSTORE_BASE64" | base64 --decode > ./simple_live_tv_app/android/app/upload-keystore.jks
           echo "Creating key.properties file..."
-          echo "storeFile=upload-keystore.jks" > android/key.properties
-          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties            
+          echo "storeFile=upload-keystore.jks" > ./simple_live_tv_app/android/key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> ./simple_live_tv_app/android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> ./simple_live_tv_app/android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> ./simple_live_tv_app/android/key.properties            
 
       # 5. 编译 Debug APK (在 TV App 目录中执行)
       - name: Build Release APK
@@ -68,6 +68,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           # Artifact 的名称
-          name: tv-app-debug-apk
+          name: tv-app-release-apk
           # 要上传的文件的路径，必须从仓库根目录开始写
-          path: simple_live_tv_app/build/app/outputs/flutter-apk/app-debug.apk
+          path: simple_live_tv_app/build/app/outputs/flutter-apk/app-release.apk
