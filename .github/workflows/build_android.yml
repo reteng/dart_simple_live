@@ -49,7 +49,7 @@ jobs:
       - name: Build Release APK
         # 新增：指定工作目录
         working-directory: ./simple_live_tv_app
-        run: flutter build apk --release
+        run: flutter build apk --debug
 
       # 6. 上传构建产物
       - name: Upload APK artifact
