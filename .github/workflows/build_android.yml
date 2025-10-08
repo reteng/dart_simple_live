@@ -36,7 +36,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0' 
+          flutter-version: '3.22.0' 
           cache: true
 
       # 4. 获取 Flutter 依赖 (在 TV App 目录中执行)
